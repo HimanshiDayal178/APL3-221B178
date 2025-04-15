@@ -1,0 +1,61 @@
+What is Docker?
+Docker is an open-source containerization platform that allows developers to package applications and their dependencies into a standardized unit called a container. Containers are lightweight, portable, and isolated from the underlying infrastructure and other containers. This makes them highly efficient and easy to deploy across different environments.
+
+Key Components of Docker
+
+Docker Engine: The core part of Docker that handles the creation and management of containers.
+
+Docker Image: A read-only template used to create containers, containing the application code and dependencies.
+
+Docker Hub: A cloud-based repository for finding and sharing container images.
+
+Dockerfile: A script containing instructions to build a Docker image.
+
+Docker Registry: A storage distribution system for Docker images, available in both public and private modes.
+
+
+
+How Docker Works
+
+Docker uses a client-server architecture. The Docker client communicates with the Docker daemon, which is responsible for building, running, and distributing Docker containers. The client and daemon can run on the same system or connect remotely via REST API over a UNIX socket or network.
+
+
+Docker Commands
+
+Some essential Docker commands include:
+
+docker run: Launches containers from images with specified runtime options and commands.
+
+docker pull: Fetches container images from the container registry to the local machine.
+
+docker ps: Displays running containers along with their important information.
+
+docker stop: Halts running containers gracefully.
+
+docker start: Restarts stopped containers.
+
+Some important commands:
+docker network ls
+(list all the networks)
+
+docker network create mongo-network
+docker network ls
+
+docker run -d -p 27017:27017 --name mongo --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo
+(-d means container will run in detached mode)
+(-p means code binding)
+
+docker ps
+(list all running containers)
+
+docker ps -a
+(list all available images)
+
+docker network inspect mongo-network
+(list all the properties of mongo-network)
+
+docker run -d -p 8081:8081 --name mongo-express --network mongo-network -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin -e ME_CONFIG_MONGODB_URL="mongodb://admin:admin@mongo:27017" mongo-express 
+(mongo-express is an admin interface to connect to the mongo database)
+
+
+
